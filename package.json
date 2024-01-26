@@ -12,11 +12,6 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "dependencies": {
-    "@capacitor/core": "latest",
-    "@capacitor/camera": "latest",
-    "@capacitor/splash-screen": "latest"
-  },
   "devDependencies": {
     "@capacitor/cli": "latest",
     "vite": "^2.9.13"
