@@ -1,0 +1,11 @@
+{
+  "appId": "tech.tajer.app",
+  "appName": "cap-demo-app",
+  "bundledWebRuntime": false,
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+}
