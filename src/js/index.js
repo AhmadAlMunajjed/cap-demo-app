@@ -1,4 +1,5 @@
 import * as Capacitor from 'https://esm.run/@capacitor/core';
+import 'https://esm.run/@capacitor/app';
 import 'https://esm.run/@capacitor/toast';
 import 'https://esm.run/@capacitor/haptics';
 import 'https://esm.run/@capacitor/camera';
@@ -160,3 +161,12 @@ async function checkLiveUpdates() {
 }
 
 checkLiveUpdates().then();
+
+async function getAppVersion() {
+  const info = await Capacitor.Plugins.App.getInfo();
+  
+  console.log('App info:', info);
+  document.querySelector('#app-version').innerHTML = info.version;
+}
+
+getAppVersion().then();
