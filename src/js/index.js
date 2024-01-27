@@ -11,6 +11,8 @@ import 'https://esm.run/@capacitor/device';
 import 'https://esm.run/@capacitor/dialog';
 import 'https://esm.run/@capacitor/geolocation';
 import 'https://esm.run/@capacitor/network';
+import 'https://esm.run/@capacitor/live-updates';
+// import * as LiveUpdates from '@capacitor/live-updates';
 
 Capacitor.Plugins.SplashScreen.show({
   autoHide: false,
@@ -121,20 +123,20 @@ setTimeout(() => {
   logCurrentNetworkStatus();
   Capacitor.Plugins.Network.addListener('networkStatusChange', async status => {
     console.log('Network status changed', status);
-    await Capacitor.Plugins.Dialog.alert({
-      title: 'Network status changed',
-      message: JSON.stringify(status),
-    });
+    // await Capacitor.Plugins.Dialog.alert({
+    //   title: 'Network status changed',
+    //   message: JSON.stringify(status),
+    // });
   });
 }, 0);
 const logCurrentNetworkStatus = async () => {
   const status = await Capacitor.Plugins.Network.getStatus();
 
   console.log('Network status:', status);
-  await Capacitor.Plugins.Dialog.alert({
-    title: 'Network status',
-    message: JSON.stringify(status),
-  });
+  // await Capacitor.Plugins.Dialog.alert({
+  //   title: 'Network status',
+  //   message: JSON.stringify(status),
+  // });
 };
 
 document.querySelector('#device-btn').addEventListener('click', async function (e) {
@@ -146,3 +148,15 @@ async function printDeviceInfo() {
   console.log('Device info:', info);
 }
 
+async function checkLiveUpdates() {
+  const result = await Capacitor.Plugins.LiveUpdates.sync();
+  console.log('result: ', result)
+  if (result.activeApplicationPathChanged) {
+    await Capacitor.Plugins.LiveUpdates.reload();
+  }
+  else {
+    await Capacitor.Plugins.SplashScreen.hide();
+  }
+}
+
+checkLiveUpdates().then();

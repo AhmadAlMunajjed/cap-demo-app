@@ -3,8 +3,14 @@
   "appName": "cap-demo-app",
   "webDir": "dist",
   "plugins": {
+    
     "SplashScreen": {
-      "launchShowDuration": 0
+      "launchShowDuration": 0,
+      "launchAutoHide": false
+    },
+    "LiveUpdates": {
+      "appId": "b5e3f5db",
+      "channel": "Production"
     }
   }
 }
